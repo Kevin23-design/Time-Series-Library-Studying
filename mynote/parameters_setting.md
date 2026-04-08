@@ -271,9 +271,7 @@ python -u run.py --task_name long_term_forecast --is_training 1 --root_path ./da
 
 python -u run.py --task_name long_term_forecast --is_training 1 --root_path ./dataset/ETT-small/ --data_path ETTh1.csv --model_id longctx_dlinear --model DLinear --data ETTh1 --features M --seq_len 336 --label_len 48 --pred_len 96 --enc_in 7 --dec_in 7 --c_out 7 --batch_size 32 --learning_rate 0.0001 --train_epochs 10 --patience 3 --num_workers 2
 
-方案 C：保持窗口，替换模型对比
 
-python -u run.py --task_name long_term_forecast --is_training 1 --root_path ./dataset/ETT-small/ --data_path ETTh1.csv --model_id cmp_timesnet --model TimesNet --data ETTh1 --features M --seq_len 96 --label_len 48 --pred_len 96 --enc_in 7 --dec_in 7 --c_out 7 --batch_size 32 --learning_rate 0.0001 --train_epochs 10 --patience 3 --num_workers 2
 
 ---
 
