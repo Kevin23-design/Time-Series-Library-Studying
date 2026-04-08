@@ -1,17 +1,3 @@
-我来帮你分析这个项目的架构并生成一份架构图。首先让我探索项目的核心结构。    
-
-读取 [](file:///d%3A/code/Time-Series-Library/models)
-读取 [](file:///d%3A/code/Time-Series-Library/exp)
-
-读取 [](file:///d%3A/code/Time-Series-Library/run.py#1-1)，行 1 到 60
-读取 [](file:///d%3A/code/Time-Series-Library/exp/exp_basic.py#1-1)，行 1 到 50
-
-读取 [](file:///d%3A/code/Time-Series-Library/data_provider)
-读取 [](file:///d%3A/code/Time-Series-Library/layers)
-
-读取 [](file:///d%3A/code/Time-Series-Library/utils)
-现在让我为你生成一份详细的架构图： 
-
 ## 项目架构总结
 ### **Time-Series-Library** 整体架构概览
 
@@ -131,4 +117,3 @@
 - ✅ **多数据集支持**：20+真实时间序列数据集
 - ✅ **完整的数据处理管道**：从CSV到模型输入的全流程
 
-你之前运行的DLinear命令就是在这个架构框架内执行的！
