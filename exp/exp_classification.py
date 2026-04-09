@@ -92,6 +92,7 @@ class Exp_Classification(Exp_Basic):
 
         model_optim = self._select_optimizer()
         criterion = self._select_criterion()
+        self.reset_training_history()
 
         for epoch in range(self.args.train_epochs):
             iter_count = 0
@@ -132,6 +133,16 @@ class Exp_Classification(Exp_Basic):
             print(
                 "Epoch: {0}, Steps: {1} | Train Loss: {2:.3f} Vali Loss: {3:.3f} Vali Acc: {4:.3f} Test Loss: {5:.3f} Test Acc: {6:.3f}"
                 .format(epoch + 1, train_steps, train_loss, vali_loss, val_accuracy, test_loss, test_accuracy))
+            self.record_training_history(
+                epoch + 1,
+                train_loss,
+                vali_loss,
+                test_loss,
+                extra_metrics={
+                    'vali_acc': val_accuracy,
+                    'test_acc': test_accuracy,
+                }
+            )
             early_stopping(-val_accuracy, self.model, path)
             if early_stopping.early_stop:
                 print("Early stopping")
@@ -139,6 +150,8 @@ class Exp_Classification(Exp_Basic):
 
         best_model_path = path + '/' + 'checkpoint.pth'
         self.model.load_state_dict(torch.load(best_model_path))
+        history_array = self.save_training_history(path)
+        self.plot_training_curve(path, history_array)
 
         return self.model
 

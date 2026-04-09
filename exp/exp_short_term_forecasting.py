@@ -66,6 +66,7 @@ class Exp_Short_Term_Forecast(Exp_Basic):
         model_optim = self._select_optimizer()
         criterion = self._select_criterion(self.args.loss)
         mse = nn.MSELoss()
+        self.reset_training_history()
 
         for epoch in range(self.args.train_epochs):
             iter_count = 0
@@ -114,6 +115,7 @@ class Exp_Short_Term_Forecast(Exp_Basic):
             test_loss = vali_loss
             print("Epoch: {0}, Steps: {1} | Train Loss: {2:.7f} Vali Loss: {3:.7f} Test Loss: {4:.7f}".format(
                 epoch + 1, train_steps, train_loss, vali_loss, test_loss))
+            self.record_training_history(epoch + 1, train_loss, vali_loss, test_loss)
             early_stopping(vali_loss, self.model, path)
             if early_stopping.early_stop:
                 print("Early stopping")
@@ -123,6 +125,8 @@ class Exp_Short_Term_Forecast(Exp_Basic):
 
         best_model_path = path + '/' + 'checkpoint.pth'
         self.model.load_state_dict(torch.load(best_model_path))
+        history_array = self.save_training_history(path)
+        self.plot_training_curve(path, history_array)
 
         return self.model
 
