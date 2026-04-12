@@ -60,8 +60,10 @@ mse:0.1487400084733963, mae:0.2406177967786789, dtw:Not calculated
 #### 192：
 python -u run.py --task_name long_term_forecast --is_training 1 --root_path ./dataset/electricity/ --data_path electricity.csv --model_id ECL_96_192 --model iTransformer --data custom --features M --seq_len 96 --label_len 48 --pred_len 192 --e_layers 3 --d_layers 1 --factor 3 --enc_in 321 --dec_in 321 --c_out 321 --d_model 512 --d_ff 512 --batch_size 16 --learning_rate 0.0005 --des Exp --itr 1
 
+#### 336：
 python -u run.py --task_name long_term_forecast --is_training 1 --root_path ./dataset/electricity/ --data_path electricity.csv --model_id ECL_96_336 --model iTransformer --data custom --features M --seq_len 96 --label_len 48 --pred_len 336 --e_layers 3 --d_layers 1 --factor 3 --enc_in 321 --dec_in 321 --c_out 321 --d_model 512 --d_ff 512 --batch_size 16 --learning_rate 0.0005 --des Exp --itr 1
 
+#### 720：
 python -u run.py --task_name long_term_forecast --is_training 1 --root_path ./dataset/electricity/ --data_path electricity.csv --model_id ECL_96_720 --model iTransformer --data custom --features M --seq_len 96 --label_len 48 --pred_len 720 --e_layers 3 --d_layers 1 --factor 3 --enc_in 321 --dec_in 321 --c_out 321 --d_model 512 --d_ff 512 --batch_size 16 --learning_rate 0.0005 --des Exp --itr 1
 
 ### 3.2 Exchange
